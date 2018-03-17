@@ -1,0 +1,9 @@
+wsgi.py
+settings.py
+__pycache__/
+*.pyc
+*.pot
+*.log
+db.sqlite3
+.idea/
+
