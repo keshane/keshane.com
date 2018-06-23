@@ -15,7 +15,7 @@ def contact(request):
 
 def blog(request):
     """Retrieves blogs from the database and renders them"""
-    posts = Post.objects.order_by("date_added")
+    posts = Post.objects.order_by("-date_added")
     data = {"posts": posts}
     return render(request, 'keshane_site/blog.html', data)
 
