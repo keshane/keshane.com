@@ -774,6 +774,10 @@ there.
     font-weight:300;
 }
 
+article {
+    border-bottom: thin solid #E1E1E1;
+}
+
 
 /* raleway.css */
 
