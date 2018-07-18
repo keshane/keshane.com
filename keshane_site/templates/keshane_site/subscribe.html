@@ -1,0 +1,10 @@
+{% extends "keshane_site/base.html" %}
+{% block content %}
+<form action="/blog/subscribe/" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ subscribe_form }}
+        </table>
+    <input type="submit" value="Subscribe"/>
+</form>
+{% endblock %}
