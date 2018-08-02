@@ -1,6 +1,7 @@
 {% extends "keshane_site/base.html" %}
 {% block content %}
-    <p>You are now subscribed. Thank you for following me!</p>
+<p>{{ message }}</p>
+
 
     <p><a href="{% url "blog" %}">Back to my blog</a></p>
 {% endblock %}
