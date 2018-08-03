@@ -38,7 +38,7 @@ class Post(models.Model):
         emails = tuple(
             (subject,
              Post.create_subscriber_notification_email(subscriber),
-             "blog@keshane.com",
+             "Keshane's Blog <blog@keshane.com>",
              [subscriber.email_address])
             for subscriber in Subscriber.objects.all())
 

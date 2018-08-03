@@ -69,7 +69,7 @@ def blog_unsubscribe_request(request):
                 Subscriber.objects.get(email_address=subscriber_email)
                 unsubscribe_link = utils.generate_unsubscribe_link(subscriber_email)
                 unsubscribe_email_message = "Please navigate to the following link to unsubscribe:\r\n" + unsubscribe_link
-                send_mail("Link to unsubscribe from Keshane's blog", unsubscribe_email_message, "blog@keshane.com",
+                send_mail("Link to unsubscribe from Keshane's blog", unsubscribe_email_message, "Keshane's Blog <blog@keshane.com>",
                           recipient_list=[subscriber_email])
                 message = "An email has been sent to " + subscriber_email + " with a link to unsubscribe from my blog."
                 return render(request, "keshane_site/unsubscribe_result.html", {"message": message})
