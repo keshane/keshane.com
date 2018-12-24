@@ -4,60 +4,50 @@ from django.core.mail import send_mail
 from django.core.signing import Signer, BadSignature
 
 from blog import utils
-from blog.models import Post
-from blog.models import Tag
-from blog.models import Subscriber
-from blog.forms import SubscriberForm
-from blog.forms import UnsubscribeForm
-
-
-def index(request):
-    """Renders the home (index) page of the site"""
-    return render(request, 'keshane_site/index.html')
-
-
-def contact(request):
-    """Renders the contact page"""
-    return render(request, 'keshane_site/contact.html')
+from .models import Post
+from .models import Tag
+from .models import Subscriber
+from .forms import SubscriberForm
+from .forms import UnsubscribeForm
 
 
 def blog(request):
     """Retrieves blogs from the database and renders them"""
     posts = Post.objects.order_by("-date_added")
     data = {"posts": posts}
-    return render(request, 'keshane_site/../blog/templates/blog/blog.html', data)
+    return render(request, 'blog/blog.html', data)
 
 
-def blog_tag(request, tag):
+def tag(request, tag):
     """Retrieves blogs from the database with the specific tag and renders them"""
     posts = Post.objects.filter(tags__name=tag).order_by("-date_added")
     data = {"posts": posts}
-    return render(request, 'keshane_site/../blog/templates/blog/blog.html', data)
+    return render(request, 'blog/blog.html', data)
 
 
-def blog_all_tags(request):
+def all_tags(request):
     """Retrieves all tags from the database and renders them"""
     tags = Tag.objects.all()
     data = {"tags": tags}
-    return render(request, 'keshane_site/../blog/templates/blog/tags.html', data)
+    return render(request, 'blog/tags.html', data)
 
 
-def blog_subscribe(request):
+def subscribe(request):
     """Renders a form to allow viewers to subscribe to the blog"""
     if request.method == "POST":
         form = SubscriberForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, "keshane_site/../blog/templates/blog/subscribe_success.html", request.POST, status=201)
+            return render(request, "blog/subscribe_success.html", request.POST, status=201)
         else:
-            return render(request, "keshane_site/../blog/templates/blog/subscribe.html", {"subscribe_form":form})
+            return render(request, "blog/subscribe.html", {"subscribe_form":form})
 
     else:
         subscribe_form = SubscriberForm()
-        return render(request, "keshane_site/../blog/templates/blog/subscribe.html", {"subscribe_form": subscribe_form})
+        return render(request, "blog/subscribe.html", {"subscribe_form": subscribe_form})
 
 
-def blog_unsubscribe_request(request):
+def unsubscribe(request):
     """Renders a form to allow subscribers to unsubscribe from the blog"""
     if request.method == "POST":
         form = UnsubscribeForm(request.POST)
@@ -72,20 +62,20 @@ def blog_unsubscribe_request(request):
                 send_mail("Link to unsubscribe from Keshane's blog", unsubscribe_email_message, "Keshane's Blog <blog@keshane.com>",
                           recipient_list=[subscriber_email])
                 message = "An email has been sent to " + subscriber_email + " with a link to unsubscribe from my blog."
-                return render(request, "keshane_site/../blog/templates/blog/unsubscribe_result.html", {"message": message})
+                return render(request, "blog/unsubscribe_result.html", {"message": message})
             except Subscriber.DoesNotExist:
                 error_message = "Sorry, that email was not found in the subscriber list."
                 status = 404
 
         # else if form is not valid, return with error messages
-        return render(request, "keshane_site/../blog/templates/blog/unsubscribe_request.html",
+        return render(request, "blog/unsubscribe_request.html",
                       {"unsubscribe_form": form, "error_message": error_message}, status=status)
     else:
         form = UnsubscribeForm()
-        return render(request, "keshane_site/../blog/templates/blog/unsubscribe_request.html", {"unsubscribe_form": form})
+        return render(request, "blog/unsubscribe_request.html", {"unsubscribe_form": form})
 
 
-def blog_unsubscribe(request, unsubscribe_token):
+def unsubscribe_user(request, unsubscribe_token):
     """Unsubscribes a subscriber if requested with a valid token"""
     status = 200
     padded_token = unsubscribe_token + ("=" * (4 - len(unsubscribe_token) % 4))
@@ -106,4 +96,4 @@ def blog_unsubscribe(request, unsubscribe_token):
     except UnicodeDecodeError:
         message = "Sorry, this URL is not recognized."
         status = 404
-    return render(request, "keshane_site/../blog/templates/blog/unsubscribe_result.html", {"message": message}, status=status)
+    return render(request, "blog/unsubscribe_result.html", {"message": message}, status=status)

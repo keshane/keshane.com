@@ -2,7 +2,7 @@ from django.core.mail import send_mass_mail
 from django.urls import reverse
 from django.db import models
 from keshane_com import settings
-from keshane_site import utils
+from blog import utils
 
 
 class Tag(models.Model):
@@ -47,7 +47,7 @@ class Post(models.Model):
     def create_subscriber_notification_email(subscriber):
         """Composes the email to send subscribers about a new blog post"""
         message_content = "Check out Keshane's newest insights at " + settings.DOMAIN + reverse("blog") + " !"
-        footer = "If you would like to unsubscribe, navigate to the following link: "\
+        footer = "If you would like to unsubscribe, navigate to the following link: " \
                  + utils.generate_unsubscribe_link(subscriber.email_address)
         message = "Dear {name},\r\n{message_content}\r\n\r\n{footer}".format(name=subscriber.first_name,
                                                                              message_content=message_content,

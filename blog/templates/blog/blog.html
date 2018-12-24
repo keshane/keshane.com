@@ -1,8 +1,8 @@
-{% extends "keshane_site/base.html" %}
+{% extends "base.html" %}
 {% block content %}
     <nav>
-        <p><a href="{%  url "blog_subscribe" %}">Subscribe to my blog</a></p>
-        <p><a href="{%  url "blog_unsubscribe_request" %}">Unsubscribe from my blog</a></p>
+        <p><a href="{%  url "subscribe" %}">Subscribe to my blog</a></p>
+        <p><a href="{%  url "unsubscribe" %}">Unsubscribe from my blog</a></p>
     </nav>
 
 {% for post in posts %}

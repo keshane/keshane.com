@@ -1,6 +1,6 @@
-{% extends "keshane_site/base.html" %}
+{% extends "base.html" %}
 {% block content %}
-<form action="/blog/subscribe/" method="POST">
+<form action="{% url "subscribe" %}" method="POST">
     {% csrf_token %}
     <table>
     {{ subscribe_form }}

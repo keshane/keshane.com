@@ -1,5 +1,5 @@
 from django import forms
-from keshane_site.models import Subscriber
+from blog.models import Subscriber
 
 
 class SubscriberForm(forms.ModelForm):

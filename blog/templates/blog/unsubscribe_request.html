@@ -1,9 +1,9 @@
-{% extends "keshane_site/base.html" %}
+{% extends "base.html" %}
 {% block content %}
     {% if error_message %}
     <p>{{ error_message }}</p>
     {% endif %}
-<form action="/blog/unsubscribe/" method="POST">
+<form action="{% url "unsubscribe" %}" method="POST">
     {% csrf_token %}
     <table>
     {{ unsubscribe_form }}

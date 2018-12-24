@@ -19,3 +19,7 @@ def sudoku(request):
     else:
         return render(request, "projects/sudoku.html")
 
+
+def projects(request):
+    return render(request, "projects/projects.html")
+
