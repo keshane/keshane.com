@@ -1,0 +1,3 @@
+[submodule "projects/sudoku"]
+	path = projects/sudoku
+	url = https://github.com/keshane/sudoku.git

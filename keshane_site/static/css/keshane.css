@@ -782,6 +782,10 @@ footer {
     margin-top: 3rem;
 }
 
+textarea {
+  height: auto;
+  resize: none;
+}
 
 /* raleway.css */
 

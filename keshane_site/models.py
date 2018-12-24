@@ -1,7 +1,6 @@
 from django.core.mail import send_mass_mail
 from django.urls import reverse
 from django.db import models
-from django.core.signing import Signer
 from keshane_com import settings
 from keshane_site import utils
 

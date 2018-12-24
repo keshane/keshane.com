@@ -1,0 +1,21 @@
+{%  extends "keshane_site/base.html" %}
+{% block content %}
+    <form action="/projects/sudoku" method="POST">
+    {% csrf_token %}
+        <p style="color: red">{{ input_errors }}</p>
+    <textarea rows="9" cols="9"
+placeholder="003020600
+900305001
+001806400
+008102900
+700000008
+006708200
+002609500
+800203009
+005010300" name="sudoku_string" required>{{ sudoku_initial }}</textarea>
+    <input type="submit" value="Solve"/>
+    </form>
+
+    <label for="solution">Solution:</label>
+    <textarea rows="9" cols="9" id="solution" readonly>{{ sudoku_solution }}</textarea>
+{% endblock %}
