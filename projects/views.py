@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .sudoku import Sudoku
+import timeit
 
 
 def sudoku(request):
@@ -10,8 +11,13 @@ def sudoku(request):
         data = {"sudoku_initial": request.POST["sudoku_string"]}
         try:
             solver = Sudoku(raw_text=sudoku_string)
+            start_time = timeit.default_timer()
             solver.solve()
+            end_time = timeit.default_timer()
             data["sudoku_solution"] = str(solver)
+            execution_time = end_time - start_time
+            execution_time *= 1000 # convert to milliseconds
+            data["execution_time"] = str(execution_time)
         except ValueError as ex:
             data["input_errors"] = str(ex)
 

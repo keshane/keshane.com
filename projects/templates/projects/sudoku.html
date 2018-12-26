@@ -1,21 +1,23 @@
-{%  extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
+    <header><h2>Sudoku</h2>
+        <p>View the source code <a href="https://github.com/keshane/Sudoku/blob/master/sudoku.py"
+                                   target="_blank">here.</a></p>
+    </header>
     <form action="/projects/sudoku" method="POST">
-    {% csrf_token %}
-        <p style="color: red">{{ input_errors }}</p>
-    <textarea rows="9" cols="9"
-placeholder="003020600
-900305001
-001806400
-008102900
-700000008
-006708200
-002609500
-800203009
-005010300" name="sudoku_string" required>{{ sudoku_initial }}</textarea>
-    <input type="submit" value="Solve"/>
+        {% csrf_token %}
+        <label for="sudoku_string">Initial Sudoku<p class="label-body">Enter the digits in the Sudoku by row. If a
+            square is unsolved, enter a '0'.</p></label>
+        <label for="sudoku_string" class="error">{{ input_errors }}</label>
+        <textarea rows="9" cols="9"
+                  placeholder="003020600&#10;900305001&#10;001806400&#10;008102900&#10;700000008&#10;006708200&#10;002609500&#10;800203009&#10;005010300"
+                  name="sudoku_string" id="sudoku_string" class="sudoku" minlength="81" maxlength="200"
+                  required>{{ sudoku_initial }}</textarea>
+        <input type="submit" class="no-inline" value="Solve"/>
     </form>
 
-    <label for="solution">Solution:</label>
-    <textarea rows="9" cols="9" id="solution" readonly>{{ sudoku_solution }}</textarea>
+    <label for="solution">Solution<p class="label-body"> {% if execution_time %} It took {{ execution_time }}
+        milliseconds to solve this Sudoku. {% endif %}</p></label>
+    <textarea rows="9" cols="9" id="solution" class="sudoku" readonly>{{ sudoku_solution }}</textarea>
+
 {% endblock %}

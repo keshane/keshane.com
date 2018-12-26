@@ -782,9 +782,18 @@ footer {
     margin-top: 3rem;
 }
 
-textarea {
+textarea.sudoku {
   height: auto;
   resize: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+input[type="submit"].no-inline {
+  display: block;
+}
+
+.error {
+  color: red;
 }
 
 /* raleway.css */
