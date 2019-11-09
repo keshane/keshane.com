@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="two columns center">
+        <div class="two columns center widescreen">
             <nav>
                 <br>
                 <b><a href="{% url "index" %}">About</a></b>
@@ -24,13 +24,18 @@
         </div>
         <div class="ten columns">
             <header>
-            <h1>Keshane Gan</h1>
+                <h1>Keshane Gan</h1>
             </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-by-two ten columns">
             <main>
                 {% block content %} {% endblock %}
             </main>
         </div>
     </div>
+
 
     <footer class="center">&copy; Keshane Gan</footer>
 </div>

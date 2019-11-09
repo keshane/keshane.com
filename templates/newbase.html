@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/newkeshane.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Keshane</title>
+</head>
+<body>
+<header>
+    <h1><a href="/">KESHANE GAN</a></h1>
+</header>
+<nav>
+    <ul>
+        <li class="nav-item"><a href="{% url "index" %}">About</a></li>
+        <li class="nav-item"><a href="{% url "projects" %}">Projects</a></li>
+        <li class="nav-item nav-item-last"><a href="{% url "contact" %}">Contact</a></li>
+    </ul>
+</nav>
+<main>
+    {% block content %} {% endblock %}
+</main>
+
+<footer>&copy; Keshane Gan</footer>
+
+</body>
+</html>
