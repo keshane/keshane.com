@@ -21,7 +21,7 @@ nav {
 }
 
 h1 {
-    letter-spacing: 0.5em;
+    letter-spacing: 0.6em;
 }
 
 h1 > a:hover, h1 > a:visited, h1 > a:link, h1 > a:active {
@@ -58,7 +58,7 @@ nav > ul {
     flex: 1 1 0;
     text-align: center;
     min-height: 80px;
-    border-bottom: 2px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
 }
 .nav-item-last {
     border-bottom: none;
@@ -72,7 +72,7 @@ nav > ul {
     }
 
     .nav-item {
-        border-right: 2px solid gainsboro;
+        border-right: 1px solid gainsboro;
         border-bottom: none;
     }
     .nav-item-last {
