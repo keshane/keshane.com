@@ -1,8 +1,12 @@
 {% extends "newbase.html" %}
 {% block content %}
-    <header><h2>Sudoku</h2>
-        <p>View the source code <a href="https://github.com/keshane/Sudoku/blob/master/sudoku.py"
-                                   target="_blank">here.</a></p>
+    <header>
+        <h2>Sudoku</h2>
+        <p>
+            <a href="https://github.com/keshane/Sudoku/blob/master/sudoku.py" target="_blank">
+                View the source code here.
+            </a>
+        </p>
     </header>
     <form action="/projects/sudoku" method="POST">
         {% csrf_token %}
@@ -10,6 +14,9 @@
             Initial Sudoku
             <p>
                 Enter the digits in the Sudoku by row. If a square is unsolved, enter a '0'.
+                If you currently don't have a particular Sudoku you want to solve right now and
+                just want to see how it works, copy one from
+                <a href="https://projecteuler.net/project/resources/p096_sudoku.txt">Project Euler's Problem 96.</a>
             </p>
         </label>
         <label for="sudoku_string">{{ input_errors }}</label>
@@ -20,8 +27,9 @@
         <input type="submit" value="Solve"/>
     </form>
 
+
     <label for="solution">
-        Solution
+        <p>Solution</p>
         <p>
             {% if execution_time %} It took {{ execution_time }} milliseconds to solve this Sudoku. {% endif %}
         </p>
