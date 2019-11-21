@@ -1,25 +1,28 @@
-
+/** Main sections **/
 body {
     max-width: 960px;
     min-height: 100vh;
-    position: relative;
     margin: 0 auto;
     font-family: "Open Sans", sans-serif;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    padding: 6px;
+    display:flex;
+    flex-direction: column;
+    padding: 0 10px;
 }
+
 header {
     text-align: center;
 }
+
 footer {
     text-align: center;
+    flex-shrink: 0;
 }
 
-nav {
-    min-height: 80px;
+main {
+    flex-grow: 1;
 }
 
+/** Details **/
 h1 {
     letter-spacing: 0.6em;
 }
@@ -28,7 +31,6 @@ h1 > a:hover, h1 > a:visited, h1 > a:link, h1 > a:active {
     text-decoration: none;
     color: black;
 }
-
 
 li.nav-item {
     list-style-type: none;
@@ -60,9 +62,11 @@ nav > ul {
     min-height: 80px;
     border-bottom: 1px solid gainsboro;
 }
+
 .nav-item-last {
     border-bottom: none;
 }
+
 @media (min-width: 550px) {
     nav > ul {
         display: flex;
@@ -79,6 +83,7 @@ nav > ul {
         border-right: none;
     }
 }
+
 textarea.sudoku {
   height: auto;
   resize: none;
