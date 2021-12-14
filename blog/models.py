@@ -17,8 +17,8 @@ class Post(models.Model):
     """Defines the contents of a blog post"""
     title = models.CharField(max_length=255)
     content = models.TextField()
-    date_added = models.DateTimeField(auto_now=True)
-    date_modified = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag)
 
     def save(self, *args, **kwargs):
