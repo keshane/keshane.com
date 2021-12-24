@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag keshane.com
