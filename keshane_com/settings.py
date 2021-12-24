@@ -116,7 +116,7 @@ USE_L10N = True
 USE_TZ = True
 
 EMAIL_HOST_USER = "blog@keshane.com"
-EMAIL_HOST_PASSWORD = "keshaneblog"
+EMAIL_HOST = "localhost"
 EMAIL_USE_TLS = True
 
 
