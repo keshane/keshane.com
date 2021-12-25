@@ -11,5 +11,6 @@ RUN pip3 install gunicorn
 COPY . .
 
 RUN touch db.sqlite3
+RUN python manage.py collectstatic
 RUN python manage.py migrate --no-input
 CMD ["gunicorn", "keshane_com.wsgi", "-b", "0:8000", "--reload"]
